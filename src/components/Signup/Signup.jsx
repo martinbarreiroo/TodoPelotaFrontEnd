@@ -1,0 +1,65 @@
+import React from 'react'
+import './Signup.css'
+import user_icon from '../assets/person.png'
+import email_icon from '../assets/email.png'
+import password_icon from '../assets/password.png'
+import logo from '../assets/logo.png'
+import { useState } from 'react';
+
+
+export const Signup = () => {
+
+    const [action, setAction] = useState('Sign up')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')  
+    const [name, setName] = useState('')
+
+    return (
+        <div className=''>
+            <div className="logo">
+                <img src={logo} alt="" /> 
+            </div>
+            <div className='container'>
+                <div className="header"></div>
+                <div>
+                    <div className="text">{action}</div>
+                    <div className="underline"></div>
+                </div>
+                <div className="inputs">
+                    
+                    <div className="input">
+                        <img src={user_icon} alt="" />
+                        <input type="text" placeholder='Name'onChange={e => setName(e.target.value)}/>
+                    </div>
+
+                    <div className="input">
+                      <img src={email_icon} alt="" />
+                      <input type="email" placeholder='E-mail' onChange={e => setEmail(e.target.value)}/>
+                    </div>
+
+                    <div className="input">
+                      <img src={password_icon} alt="" />
+                      <input type="password" placeholder='Password' onChange={e => setPassword(e.target.value)}/>        
+                    </div>
+                </div>
+                {/* {action==='Sign up'?<div></div>: <div className="forgot-password">Lost Password? <span>Click Here!</span></div>} */}
+                
+                <div className="submit-container">
+                  <div className={action==='Login'?'submit gray':'submit'} onClick={()=>{
+                      setAction('Sign Up');
+                      const user ={name,email,password}
+                      fetch('http://localhost:8080/user/add', {
+                          method: 'POST',
+                          headers: {
+                              'Content-Type': 'application/json',
+                          },
+                          body: JSON.stringify(user),
+                      })
+                      .then(response => response.json())
+                      // ...
+                  }}>Sign Up</div>
+              </div>
+            </div>
+        </div>
+    )
+}
