@@ -3,6 +3,8 @@ import './Signup.css'
 import user_icon from '../assets/person.png'
 import email_icon from '../assets/email.png'
 import password_icon from '../assets/password.png'
+import description_icon from '../assets/description.png'
+import position_icon from '../assets/position.png'
 import logo from '../assets/logo.png'
 import { useState } from 'react';
 
@@ -13,6 +15,8 @@ export const Signup = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')  
     const [name, setName] = useState('')
+    const [description, setDescription] = useState('')
+    const [position, setPosition] = useState('')
 
     return (
         <div className=''>
@@ -41,13 +45,25 @@ export const Signup = () => {
                       <img src={password_icon} alt="" />
                       <input type="password" placeholder='Password' onChange={e => setPassword(e.target.value)}/>        
                     </div>
+
+                    <div className="input">
+                      <img src={description_icon} alt="" />
+                      <input type="description" placeholder='Description' onChange={e => setDescription(e.target.value)}/>        
+                    </div>
+
+                    <div className="input">
+                      <img src={position_icon} alt="" />
+                      <input type="position" placeholder='Position' onChange={e => setPosition(e.target.value)}/>        
+                    </div>
+
+
                 </div>
                 {/* {action==='Sign up'?<div></div>: <div className="forgot-password">Lost Password? <span>Click Here!</span></div>} */}
                 
                 <div className="submit-container">
                   <div className={action==='Login'?'submit gray':'submit'} onClick={()=>{
                       setAction('Sign Up');
-                      const user ={name,email,password}
+                      const user ={name,email,password, description, position}
                       fetch('http://localhost:8080/user/add', {
                           method: 'POST',
                           headers: {
