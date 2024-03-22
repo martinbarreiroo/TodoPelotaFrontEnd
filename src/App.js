@@ -1,28 +1,13 @@
 
 import './App.css';
-import { AppBar, Toolbar, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    backgroundColor: 'green',
-  },
-  title: {
-    fontFamily: 'Arial',
-  },
-}));
+import { LoginSignup } from './components/LoginSignup/LoginSignup';
+
 
 function App() {
-  const classes = useStyles();
-
   return (
     <div className="App">
-      <AppBar position="static" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            TodoPelota
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <LoginSignup />
+
     </div>
   );
 }
