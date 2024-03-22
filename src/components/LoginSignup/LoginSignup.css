@@ -4,6 +4,10 @@
     display: flex;
     justify-content: center;
     margin-top: 50px;
+    position: absolute;
+    top: 7%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .container{
@@ -14,7 +18,7 @@
     width: 600px;
     flex-direction: column;
     margin: auto;
-    margin-top: 18px;
+    margin-top: 200px;
     margin-bottom: 200px;
     background: #FFFFFF;
     padding-bottom: 30px;
