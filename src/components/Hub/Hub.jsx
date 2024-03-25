@@ -12,7 +12,7 @@ export const Hub = () => {
         <div className="hub-container">
             <img src={logo} alt="Logo" className="logo" />
 
-               <Link to="/Signup"> 
+               <Link to="/"> 
                 <div className="logout-container">
                     <button className="logout-button">Log Out</button>
                 </div>
