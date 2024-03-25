@@ -3,7 +3,8 @@ import './Hub.css';
 import logo from '../assets/logo.png'
 import trofeo from '../assets/trofeo.png'
 import estadistica from '../assets/estadistica.png'
-import person from '../assets/person.png'
+import name from '../assets/person.png'
+import plus from '../assets/plus.png'
 
 export const Hub = () => {
     return (
@@ -16,12 +17,14 @@ export const Hub = () => {
                     </button>
                         
                     <button className="home-button">Mis Estadísticas
-                        <img src={estadistica} alt="trofeo" className="estadistica" />
+                        <img src={estadistica} alt="estadistica" className="estadistica" />
                     </button>
                         
-                    <button className="home-button">Crear Torneo</button>
+                    <button className="home-button">Crear Torneo
+                        <img src={plus} alt="trofeo" className="estadistica" />
+                    </button>
                     <button className="home-button">Perfil
-                        <img src={person} alt="trofeo" className="trofeo" />
+                        <img src={name} alt="name" className="name" />
                     </button>
                         
                 </div>

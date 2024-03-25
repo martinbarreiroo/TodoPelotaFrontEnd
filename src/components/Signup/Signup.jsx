@@ -8,7 +8,7 @@ import description_icon from '../assets/description.png'
 import position_icon from '../assets/position.png'
 import logo from '../assets/logo.png'
 import { useState } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 export const Signup = () => {
@@ -20,6 +20,7 @@ export const Signup = () => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [position, setPosition] = useState('')
+
 
     return (
         <div className=''>
@@ -72,6 +73,7 @@ export const Signup = () => {
 
                 {/* {action==='Sign up'?<div></div>: <div className="forgot-password">Lost Password? <span>Click Here!</span></div>} */}
                 
+            <Link to='/Hub' className='link'>
                 <div className="submit-container">
                   <div className={action==='Sign Up'?'submit gray':'submit'} 
                   onClick={()=>{
@@ -85,13 +87,20 @@ export const Signup = () => {
                           body: JSON.stringify(user),
                       })
                       .then(response => response.json())
-                      // ...
+                      .then(data => {
+                        if (data.success) {
+                            // handle success
+                        } else {
+                          // handle error
+                        }
+                      });
                   }}
                   style={{backgroundColor: action === 'Sign Up' ? 'gray' : '#729560'}}
                   >
                     Sign Up
                   </div>
               </div>
+            </Link>
             </div>
         </div>
     )
