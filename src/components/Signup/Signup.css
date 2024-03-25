@@ -93,6 +93,8 @@
     width: 100%;
     height: 100%;
     justify-content: center;
+    text-decoration: none;
+
   }
 
 .submit-container {
@@ -102,12 +104,13 @@
     width: 100%;
     height: 100%;
     justify-content: center;
+    position: relative;
 }
 
 .submit{
     width: 50%; /* changed from 220px to 50% */
     max-width: 220px;
-    margin: auto;
+    margin-top: 100px;
     height: 59px;
     border-radius: 50px;
     background: #729560;
@@ -125,6 +128,27 @@
 .gray {
     background: #eaeaea;
     color: #676767;
+}
+
+.footer-signup{
+
+    position: absolute;
+    align-items: center;
+    margin-top: 530px;
+    color: #797979;
+    font-size: 15px;
+}
+
+.click-here-signup{
+    
+    color: #729560;
+    cursor: pointer;
+}	
+
+.footer-signup span{
+    color: #729560;
+    cursor: pointer;
+
 }
 
 /* For tablets: */

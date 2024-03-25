@@ -87,6 +87,9 @@
     color: #797979;
 }
 
+.link-login {
+    text-decoration: none;
+}
 
 .submit-container-login {
     display: flex;
@@ -124,6 +127,7 @@
 }
 
 .click-here-login{
+    
     color: #729560;
     cursor: pointer;
 }	

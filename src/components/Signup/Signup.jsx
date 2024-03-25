@@ -73,34 +73,42 @@ export const Signup = () => {
 
                 {/* {action==='Sign up'?<div></div>: <div className="forgot-password">Lost Password? <span>Click Here!</span></div>} */}
                 
-            <Link to='/Hub' className='link'>
-                <div className="submit-container">
-                  <div className={action==='Sign Up'?'submit gray':'submit'} 
-                  onClick={()=>{
-                      setAction('Sign Up');
-                      const user ={name,email,password, description, position}
-                      fetch('http://localhost:8080/user/add', {
-                          method: 'POST',
-                          headers: {
-                              'Content-Type': 'application/json',
-                          },
-                          body: JSON.stringify(user),
-                      })
-                      .then(response => response.json())
-                      .then(data => {
-                        if (data.success) {
-                            // handle success
-                        } else {
-                          // handle error
-                        }
-                      });
-                  }}
-                  style={{backgroundColor: action === 'Sign Up' ? 'gray' : '#729560'}}
-                  >
-                    Sign Up
-                  </div>
-              </div>
-            </Link>
+                <Link to='/Hub' className='link'>
+                    <div className="submit-container">
+                    <div className={action==='Sign Up'?'submit gray':'submit'} 
+                    onClick={()=>{
+                        setAction('Sign Up');
+                        const user ={name,email,password, description, position}
+                        fetch('http://localhost:8080/user/add', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(user),
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                // handle success
+                            } else {
+                            // handle error
+                            }
+                        });
+                    }}
+                    style={{backgroundColor: action === 'Sign Up' ? 'gray' : '#729560'}}
+                    >
+                        Sign Up
+                    </div>
+                </div>
+                </Link>
+
+                <div className="footer-signup">Already have an account? 
+                <Link to='/' className='click-here-signup'>
+                    <span> Log In Here!</span>
+                    
+                </Link>
+                </div>
+
             </div>
         </div>
     )
