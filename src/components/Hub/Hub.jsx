@@ -5,12 +5,19 @@ import trofeo from '../assets/trofeo.png'
 import estadistica from '../assets/estadistica.png'
 import name from '../assets/person.png'
 import plus from '../assets/plus.png'
+import { Link } from 'react-router-dom';
 
 export const Hub = () => {
     return (
         <div className="hub-container">
             <img src={logo} alt="Logo" className="logo" />
-                
+
+               <Link to="/Signup"> 
+                <div className="logout-container">
+                    <button className="logout-button">Log Out</button>
+                </div>
+                </Link>
+
                 <div className="home-menu">
                     <button className="home-button">Mis Torneos
                         <img src={trofeo} alt="trofeo" className="trofeo" />
