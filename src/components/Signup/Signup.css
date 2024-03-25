@@ -1,9 +1,10 @@
 .logo {
-    width: 700px; 
-    height: 99px; 
+    width: 100px; /* set a specific width */
+    height: 100px; /* set a specific height */
     display: flex;
     justify-content: center;
     margin-top: 50px;
+    margin-bottom: 130px;
     position: absolute;
     top: 7%;
     left: 50%;
@@ -14,8 +15,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
-    width: 600px;
+    height: 90vh;
+    width: 80%; /* changed from 600px to 80% */
+    max-width: 600px;
     flex-direction: column;
     margin: auto;
     margin-top: 200px;
@@ -29,9 +31,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 9px;
+    gap: 12px;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 11%;
 
 }
 
@@ -59,7 +61,8 @@
     display: flex;
     align-items: center;
     margin: auto;
-    width: 480px;
+    width: 80%; /* changed from 480px to 80% */
+    max-width: 480px;
     height: 65px;
     border-radius: 6px;
     background: #d1d1d1;
@@ -68,13 +71,13 @@
 
 .input img {
 
-    width: 27px; /* adjust as needed */
-    height: 27px;
+    width: 7%; /* changed from 27px to 10% */
+    height: auto;
     margin: 0px 30px;
 }
 
 .input input {
-    width: 400px;
+    width: 80%;
     height: 50px;
     border: none;
     outline: none;
@@ -100,11 +103,17 @@
 .submit-container {
     display: flex;
     gap: 20px;
-    margin: 50px auto;
+    margin-bottom: 9%;
+    margin-top: 7%;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
 }
 
 .submit{
-    width: 220px;
+    width: 50%; /* changed from 220px to 50% */
+    max-width: 220px;
+    margin: auto;
     height: 59px;
     border-radius: 50px;
     background: #729560;
@@ -122,4 +131,42 @@
 .gray {
     background: #eaeaea;
     color: #676767;
+}
+
+/* For tablets: */
+@media only screen and (max-width: 768px) {
+    .logo {
+        width: 70%; /* increase the width for smaller screens */
+    }
+    .container {
+        width: 90%; /* increase the width for smaller screens */
+    }
+    .input {
+        width: 90%; /* increase the width for smaller screens */
+    }
+    .input input {
+        width: 90%; /* increase the width for smaller screens */
+    }
+    .submit {
+        width: 70%; /* increase the width for smaller screens */
+    }
+}
+
+/* For mobile phones: */
+@media only screen and (max-width: 480px) {
+    .logo {
+        width: 90%; /* increase the width for even smaller screens */
+    }
+    .container {
+        width: 100%; /* increase the width for even smaller screens */
+    }
+    .input {
+        width: 100%; /* increase the width for even smaller screens */
+    }
+    .input input {
+        width: 100%; /* increase the width for even smaller screens */
+    }
+    .submit {
+        width: 90%; /* increase the width for even smaller screens */
+    }
 }
