@@ -8,8 +8,7 @@ import description_icon from '../assets/description.png'
 import position_icon from '../assets/position.png'
 import logo from '../assets/logo.png'
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 
 export const Signup = () => {
 
@@ -20,7 +19,7 @@ export const Signup = () => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [position, setPosition] = useState('')
-
+    const navigate = useNavigate();
 
     return (
         <div className=''>
@@ -71,44 +70,37 @@ export const Signup = () => {
                     </div>
                 </div>
 
-                {/* {action==='Sign up'?<div></div>: <div className="forgot-password">Lost Password? <span>Click Here!</span></div>} */}
                 
-                <Link to='/Hub' className='link'>
-                    <div className="submit-container">
-                    <div className={action==='Sign Up'?'submit gray':'submit'} 
-                    onClick={()=>{
-                        setAction('Sign Up');
-                        const user ={name,email,password, description, position}
-                        fetch('http://localhost:8080/user/add', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify(user),
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                // handle success
-                            } else {
-                            // handle error
+                <div className="submit-container">
+                    <div className= 'submit'
+                        onClick={async ()=>{
+                            setAction('Sign Up');
+                            const user ={name,email,password, description, position}
+                            try {
+                                const response = await fetch('http://localhost:8080/user/add', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify(user),
+                                });
+
+                                if (!response.ok) {
+                                    throw new Error(`HTTP error! status: ${response.status}`);
+                                }
+
+                                else if (response.ok) {
+                                    navigate('/hub'); // navigate to /hub route if sign up is successful
+                                }
+                            } catch (error) {
+                                console.error('There was a problem with the fetch operation: ', error);
                             }
-                        });
-                    }}
-                    style={{backgroundColor: action === 'Sign Up' ? 'gray' : '#729560'}}
+                        }}
+                        style={{backgroundColor: action === 'Sign Up' ? 'gray' : '#729560'}}
                     >
                         Sign Up
                     </div>
                 </div>
-                </Link>
-
-                <div className="footer-signup">Already have an account? 
-                <Link to='/' className='click-here-signup'>
-                    <span> Log In Here!</span>
-                    
-                </Link>
-                </div>
-
             </div>
         </div>
     )

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import email_icon from '../assets/email.png'
 import password_icon from '../assets/password.png'
 import show_password_icon from '../assets/show_password.png'
@@ -10,6 +11,7 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
 
     return (
         <div className=''>
@@ -19,11 +21,10 @@ function Login() {
             <div className='container-login'>
                 <div className="header-login">
 
-                <div className="text-login">Log In</div>
+                    <div className="text-login">Log In</div>
                     <div className="underline-login"></div>
 
                 </div>
-                    
 
                 <div className="inputs-login">
                     <div className="input-login">
@@ -45,51 +46,46 @@ function Login() {
                         />
                     </div>
 
-                    <Link to='/Hub' className='link-login'>
-                        <div className="submit-container-login">
-                            <div className='submit-login' 
-                                onClick={() => {
-                                    const user = { email, password }
-                                    fetch('http://localhost:8080/user/login', {
-                                                method: 'POST',
-                                                headers: {
-                                                        'Content-Type': 'application/json',
-                                                },
-                                                body: JSON.stringify(user),
-                                                })
-                                                .then(response => {
-                                                if (!response.ok) {
-                                                        throw new Error(`HTTP error! status: ${response.status}`);
-                                                }
-                                                return response.json();
-                                                })
-                                                .then(data => {
-                                                if (data.success) {
-                                                        // handle success
-                                                } else {
-                                                        // handle error
-                                                }
-                                                })
-                                                .catch(error => {
-                                                console.error('There was a problem with the fetch operation: ', error);
-                                                });
-                                }}
-                            >
-                                Log In
-                            </div>
-                        </div>
-                    </Link>
+                    <div className='submit-login' 
+                        onClick={async () => {
+            
+                            const token = btoa(`${email}:${password}`); // Base64 encode the email and password
+                            try {
+                                const response = await fetch('http://localhost:8080/authentication/api/check-authentication', {
+                                    method: 'GET',
+                                    headers: {
+                                        'Authorization': token,
+                                    },
+                                });
+
+                                if (!response.ok) {
+                                    throw new Error(`HTTP error! status: ${response.status}`);
+                                }
+
+                                const isAuthenticated = await response.json();
+
+                                if (isAuthenticated) {
+                                    navigate('/Hub'); // navigate to /Hub route if authentication is successful
+                                } else {
+                                    throw new Error('Authentication failed');
+                                }
+                            } catch (error) {
+                                console.error('There was a problem with the fetch operation: ', error);
+                            }
+                        }}
+                    >
+                        Log In
+                    </div>
                 </div>
                                 
                 <div className="footer-login">Don't have an account? 
-                <Link to='/Signup' className='click-here-login'>
-                    <span> Click Here!</span>
-                    
-                </Link>
+                    <Link to='/Signup' className='click-here-login'>
+                        <span> Click Here!</span>
+                    </Link>
                 </div>
 
             </div>
-        </div> // Add closing curly brace here
+        </div>
     );
 }
 
