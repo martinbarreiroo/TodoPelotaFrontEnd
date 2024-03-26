@@ -23,7 +23,7 @@ export const Signup = () => {
 
     return (
         <div className=''>
-            <div className="logo">
+            <div className="logo-signup">
                 <img src={logo} alt="" /> 
             </div>
             <div className='container'>
