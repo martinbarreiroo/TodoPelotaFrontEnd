@@ -8,7 +8,7 @@ import description_icon from '../assets/description.png'
 import position_icon from '../assets/position.png'
 import logo from '../assets/logo.png'
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link} from 'react-router-dom';
 
 export const Signup = () => {
 
@@ -68,6 +68,12 @@ export const Signup = () => {
                       <img src={position_icon} alt="" />
                       <input type="position" placeholder='Position' onChange={e => setPosition(e.target.value)}/>        
                     </div>
+                </div>
+
+                <div className="footer-signup">Already have an account? 
+                    <Link to='/' className='click-here-signup'>
+                        <span> Log In Here!</span>
+                    </Link>
                 </div>
 
                 
